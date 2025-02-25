@@ -1,4 +1,15 @@
 import numpy as np
+import nltk 
+
+# Descargar los recursos necesarios
+nltk.download('punkt')
+nltk.download('punkt_tab')
+
+from nltk.tokenize import word_tokenize 
+
+def tokenize(text):
+    tokens = word_tokenize(text)  # Tokenizamos el texto
+    print("Tokens:", tokens)  # Mostramos los tokens generados
 
 bible = {
     "good": ["almendras", "cebolla", "patatas", "lechuga", "tomate", "cheese"],
@@ -15,7 +26,7 @@ def multi(x: int, y: int, dich: int = 1, prompt=None, abdupt=False):
         return
 
     if prompt is None:
-        prompt = []
+        prompt = ""
 
     if x > 0:
         total_porcentaje = 0
@@ -30,10 +41,6 @@ def multi(x: int, y: int, dich: int = 1, prompt=None, abdupt=False):
                             coincidencia += 1
 
                     porcentaje = calcular_porcentaje(coincidencia, word)
-
-                    # Si la palabra está en la categoría 'good', aumentamos el porcentaje
-                    if category == "good":
-                        porcentaje += 20  # Bonificación del 20% por estar en la categoría 'good'
                     
                     if porcentaje > 0:
                         print(f"Coincidencia parcial de '{j}' con '{word}' en la categoría '{category}' ({porcentaje:.2f}%)")
@@ -53,5 +60,8 @@ def multi(x: int, y: int, dich: int = 1, prompt=None, abdupt=False):
             for i in range(1, y + 1):
                 result = (x * np.pi + i) / dich
                 print(f"{result:.4f}")
+        
+        tokenize(prompt)  # Llamamos a la función tokenize después de procesar las palabras
     else:
         print(f"{x} es menor a 0")
+
