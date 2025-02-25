@@ -30,6 +30,11 @@ def multi(x: int, y: int, dich: int = 1, prompt=None, abdupt=False):
                             coincidencia += 1
 
                     porcentaje = calcular_porcentaje(coincidencia, word)
+
+                    # Si la palabra está en la categoría 'good', aumentamos el porcentaje
+                    if category == "good":
+                        porcentaje += 20  # Bonificación del 20% por estar en la categoría 'good'
+                    
                     if porcentaje > 0:
                         print(f"Coincidencia parcial de '{j}' con '{word}' en la categoría '{category}' ({porcentaje:.2f}%)")
                         total_porcentaje += porcentaje
@@ -42,7 +47,7 @@ def multi(x: int, y: int, dich: int = 1, prompt=None, abdupt=False):
 
         if total_palabras > 0:
             porcentaje_promedio = total_porcentaje / total_palabras
-            print("{", f"{porcentaje_promedio:.2f}%", "} De que sea sana")
+            print("{", f"{porcentaje_promedio:.2f}%", "} De coincidencias")
 
         if abdupt:
             for i in range(1, y + 1):

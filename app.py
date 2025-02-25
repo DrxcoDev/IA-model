@@ -4,4 +4,4 @@ size = 5
 large = 6
 dich = 2
 
-multi(size, large, dich, "cookies y pizza para cenar")
+multi(size, large, dich, "Pizza")
